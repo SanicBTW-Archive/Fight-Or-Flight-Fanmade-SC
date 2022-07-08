@@ -681,7 +681,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		#end
 		'GAMEPLAY',
 		'Downscroll',
-		'Middlescroll',
+		//'Middlescroll',
 		'Ghost Tapping',
 		'Note Delay',
 		'Note Splashes',

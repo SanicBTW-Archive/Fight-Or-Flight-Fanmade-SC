@@ -21,21 +21,11 @@ using StringTools;
 
 class FreeplayState extends MusicBeatState
 {
-	//Character head icons for your songs
-	static var songsHeads:Array<Dynamic> = [
-		['dad'],							//Week 1
-		['spooky', 'spooky', 'monster'],	//Week 2
-		['pico'],							//Week 3
-		['mom'],							//Week 4
-		['parents', 'parents', 'monster'],	//Week 5
-		['senpai', 'senpai', 'spirit']		//Week 6
-	];
-
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
 	private static var curSelected:Int = 0;
-	private static var curDifficulty:Int = 1;
+	private static var curDifficulty:Int = 2;
 
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
@@ -59,19 +49,6 @@ class FreeplayState extends MusicBeatState
 	{
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
-		for (i in 0...initSonglist.length)
-		{
-			var songArray:Array<String> = initSonglist[i].split(":");
-			addSong(songArray[0], 0, songArray[1]);
-			songs[songs.length-1].color = Std.parseInt(songArray[2]);
-		}
-		var colorsList = CoolUtil.coolTextFile(Paths.txt('freeplayColors'));
-		for (i in 0...colorsList.length)
-		{
-			coolColors.push(Std.parseInt(colorsList[i]));
-		}
-
 		/* 
 			if (FlxG.sound.music != null)
 			{
@@ -85,12 +62,7 @@ class FreeplayState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
-		for (i in 1...WeekData.songsNames.length) {
-			#if !debug
-			if (StoryMenuState.weekUnlocked[i])
-			#end
-				addWeek(WeekData.songsNames[i], i, songsHeads[i-1]);
-		}
+		addSong("Fight-or-flight", -1, 'bf');
 
 		// LOAD MUSIC
 
@@ -137,7 +109,7 @@ class FreeplayState extends MusicBeatState
 		bg.color = songs[curSelected].color;
 		intendedColor = bg.color;
 		changeSelection();
-		changeDiff();
+		//changeDiff();
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
 

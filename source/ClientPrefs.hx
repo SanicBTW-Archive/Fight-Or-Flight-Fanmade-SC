@@ -9,7 +9,7 @@ import Controls;
 class ClientPrefs {
 	//TO DO: Redo ClientPrefs in a way that isn't too stupid
 	public static var downScroll:Bool = false;
-	public static var middleScroll:Bool = false;
+	public static var middleScroll:Bool = true;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
