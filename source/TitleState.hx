@@ -77,14 +77,20 @@ class TitleState extends MusicBeatState
 			DiscordClient.shutdown();
 		});
 		#end
-		new FlxTimer().start(0.1, function(tmr:FlxTimer)
-		{
-			FlxG.sound.play(Paths.sound('titleLaugh'), 1, false, null, false, function()
-			{
-				skipIntro();
-			});
-			startIntro();
-		});
+		if(!HaxeFlixelEXEIntro.leftState) {
+			FlxTransitionableState.skipNextTransIn = true;
+			FlxTransitionableState.skipNextTransOut = true;
+			MusicBeatState.switchState(new HaxeFlixelEXEIntro());
+		} else {
+			new FlxTimer().start(0.1, function(tmr:FlxTimer)
+				{
+					FlxG.sound.play(Paths.sound('titleLaugh'), 1, false, null, false, function()
+					{
+						skipIntro();
+					});
+					startIntro();
+				});
+		}
 		#end
 	}
 

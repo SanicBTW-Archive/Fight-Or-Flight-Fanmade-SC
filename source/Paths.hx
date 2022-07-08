@@ -12,6 +12,7 @@ using StringTools;
 class Paths
 {
 	inline public static var SOUND_EXT = "ogg";
+	inline public static var VIDEO_EXT = "mp4";
 
 	static var currentLevel:String;
 
@@ -138,6 +139,11 @@ class Paths
 	inline static public function getPackerAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
+	}
+
+	static public function video(key:String)
+	{
+		return 'assets/videos/$key.$VIDEO_EXT';
 	}
 	
 	#if MODS_ALLOWED
