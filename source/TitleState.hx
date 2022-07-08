@@ -197,6 +197,7 @@ class TitleState extends MusicBeatState
 			FlxTween.tween(bg, {alpha: 0}, 1);
 
 			transitioning = true;
+			MainMenuState.firstStart = true;
 
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
