@@ -1,7 +1,7 @@
 package;
 
 import flixel.addons.transition.FlxTransitionableState;
-import FlxVideo;
+import vlc.MP4Handler;
 
 class HaxeFlixelEXEIntro extends MusicBeatState
 {
@@ -9,11 +9,15 @@ class HaxeFlixelEXEIntro extends MusicBeatState
 
     override function create()
     {
-        (new FlxVideo(Paths.video("HaxeFlixelIntro"))).finishCallback = function() {
+        var video:MP4Handler = new MP4Handler();
+        video.playVideo(Paths.video("HaxeFlixelIntro"));
+        video.finishCallback = function () 
+        {
             leftState = true;
             FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
             MusicBeatState.switchState(new TitleState());
+            return;
         }
         super.create();
     }
