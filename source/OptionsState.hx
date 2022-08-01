@@ -40,7 +40,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('menuBGBlue'));
+		menuBG = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -719,6 +719,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		{
 			var isCentered:Bool = unselectableCheck(i);
 			var optionText:Alphabet = new Alphabet(0, 70 * i, options[i], false, false);
+			optionText.color = FlxColor.WHITE;
 			optionText.isMenuItem = true;
 			if(isCentered) {
 				optionText.screenCenter(X);

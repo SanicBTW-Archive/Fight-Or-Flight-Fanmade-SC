@@ -19,6 +19,7 @@ class Note extends FlxSprite
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var ignoreNote:Bool = false;
+	public var hitByOpponent:Bool = false;
 	public var prevNote:Note;
 
 	public var sustainLength:Float = 0;
@@ -31,12 +32,16 @@ class Note extends FlxSprite
 
 	public var colorSwap:ColorSwap;
 	public var inEditor:Bool = false;
+	public var gfNote:Bool = false;
 
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var PURP_NOTE:Int = 0;
 	public static var GREEN_NOTE:Int = 2;
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
+
+	public var noAnimation:Bool = false;
+
 
 	private function set_noteType(value:Int):Int {
 		if(noteData > -1 && noteType != value) {

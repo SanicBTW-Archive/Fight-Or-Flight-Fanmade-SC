@@ -82,14 +82,11 @@ class TitleState extends MusicBeatState
 			FlxTransitionableState.skipNextTransOut = true;
 			MusicBeatState.switchState(new HaxeFlixelEXEIntro());
 		} else {
-			new FlxTimer().start(0.1, function(tmr:FlxTimer)
-				{
-					FlxG.sound.play(Paths.sound('titleLaugh'), 1, false, null, false, function()
-					{
-						skipIntro();
-					});
-					startIntro();
-				});
+			FlxG.sound.play(Paths.sound('titleLaugh'), 1, false, null, false, function()
+			{
+				skipIntro();
+			});
+			startIntro();
 		}
 		#end
 	}

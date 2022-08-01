@@ -176,11 +176,6 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 1);
 
-		var dataerase:FlxText = new FlxText(FlxG.width - 300, FlxG.height - 18 * 2, 300, "Hold DEL to erase ALL data (this doesn't include ALL options)", 3);
-		dataerase.scrollFactor.set();
-		dataerase.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(dataerase);
-
 		changeItem();
 
 		#if ACHIEVEMENTS_ALLOWED
@@ -235,6 +230,9 @@ class MainMenuState extends MusicBeatState
 
 		if (!selectedSomethin && finishedFunnyMove)
 		{
+			if(FlxG.keys.justPressed.T){
+				MusicBeatState.switchState(new TestState());
+			}
 			if (controls.UI_UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -281,14 +279,15 @@ class MainMenuState extends MusicBeatState
 
 								switch (daChoice)
 								{
-									/*case 'story_mode':
-										MusicBeatState.switchState(new StoryMenuState());*/
 									case 'freeplay':
-										MusicBeatState.switchState(new FreeplayState());
-									case 'awards':
-										MusicBeatState.switchState(new AchievementsMenuState());
-									case 'credits':
-										MusicBeatState.switchState(new CreditsState());
+										var songLowercase:String = "fight-or-flight";
+										var poop:String = Highscore.formatSong(songLowercase, 2);
+
+										PlayState.SONG = Song.loadFromJson(poop, songLowercase);
+										PlayState.isStoryMode = false;
+										PlayState.storyDifficulty = 2;
+
+										LoadingState.loadAndSwitchState(new PlayState());
 									case 'options':
 										MusicBeatState.switchState(new OptionsState());
 								}
