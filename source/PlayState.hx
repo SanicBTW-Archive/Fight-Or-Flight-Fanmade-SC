@@ -200,7 +200,7 @@ class PlayState extends MusicBeatState
 	var fearBar:FlxBar;
 	var fearBarBG:AttachedSprite;
 	var starvedFear:Float = 0;
-	var camMovFOF:Int = 350;
+	var camMovFOF:Int = #if desktop 350 #end #if html5 30 #end;
 	public static var startedSong = false;
 	public var sicks:Int = 0;
 	public var goods:Int = 0;
@@ -361,6 +361,7 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = -5000;
 
 		strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 5).makeGraphic(FlxG.width, 10);
+		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 115;
 		strumLine.scrollFactor.set();
 
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 20, 400, "", 32);
@@ -370,6 +371,7 @@ class PlayState extends MusicBeatState
 		timeTxt.borderSize = 2;
 		timeTxt.visible = !ClientPrefs.hideTime;
 		timeTxt.y = FlxG.height - 95;
+		if(ClientPrefs.downScroll) timeTxt.y = 5;
 
 		timeBarBG = new FlxSprite(timeTxt.x, timeTxt.y + (timeTxt.height / 4)).loadGraphic(Paths.image('timeBar'));
 		timeBarBG.scrollFactor.set();
@@ -463,6 +465,9 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
+		if(ClientPrefs.downScroll){
+			scoreTxt.y = 45;
+		}
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -480,7 +485,7 @@ class PlayState extends MusicBeatState
 		add(fearBarMain);
 
 		fearBarBG = new AttachedSprite('fearbarBG');
-		fearBarBG.x = fearBarMain.x + 15;
+		fearBarBG.x = fearBarMain.x + 16;
 		fearBarBG.y = fearBarMain.y;
 		fearBarBG.angle = 0;
 		fearBarBG.scrollFactor.set();
@@ -489,7 +494,7 @@ class PlayState extends MusicBeatState
 		fearBarBG.updateHitbox();
 		add(fearBarBG);
 
-		fearBar = new FlxBar(fearBarMain.x + 28, fearBarMain.y + 16, BOTTOM_TO_TOP, Std.int(fearBarBG.width), Std.int(fearBarBG.height), this,
+		fearBar = new FlxBar(fearBarMain.x + 29, fearBarMain.y + 16, BOTTOM_TO_TOP, Std.int(fearBarBG.width), Std.int(fearBarBG.height), this,
 		'starvedFear', 0, 100);
 		fearBar.angle = 0;
 		fearBar.scrollFactor.set();

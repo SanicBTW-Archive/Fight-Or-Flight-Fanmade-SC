@@ -230,9 +230,11 @@ class MainMenuState extends MusicBeatState
 
 		if (!selectedSomethin && finishedFunnyMove)
 		{
+			#if !html5
 			if(FlxG.keys.justPressed.T){
 				MusicBeatState.switchState(new TestState());
 			}
+			#end
 			if (controls.UI_UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));

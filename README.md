@@ -1,5 +1,5 @@
-# Attempt to rebuild fight or flight from Sonic.EXE v3 cancelled build
+# Attempt to rebuild Fight or Flight from Sonic.EXE v3 cancelled build
 
-HTML5 seems to be a little bit buggy, I will try to fix it soon
+All credits to the Sonic.exe team (reused sprites, v2.5 menu, basically everything)
 
-Also no downscroll for now, sorry! (i doubt anyone will use downscroll on this so yeah)
+This was built using 0.3.2h and the Main Menu State code from v2.5, no v3 source code was used aside from the LUA script that comes in the song folder in the cancelled build
