@@ -1,5 +1,6 @@
 package;
 
+import NewPauseMenuState.NewPauseMenu;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -235,6 +236,9 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new TestState());
 			}
 			#end
+			if(FlxG.keys.justPressed.P){
+				openSubState(new NewPauseMenu(0, 0));
+			}
 			if (controls.UI_UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
