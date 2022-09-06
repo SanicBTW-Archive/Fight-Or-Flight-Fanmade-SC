@@ -1,3 +1,5 @@
+# Moved to https://github.com/SanicBTW/Fight-or-Flight-Port
+
 # Attempt to rebuild Fight or Flight from Sonic.EXE v3 cancelled build
 
 All credits to the Sonic.exe team (reused sprites, v2.5 menu, basically everything)
